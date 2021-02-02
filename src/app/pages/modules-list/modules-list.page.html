@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Modules</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -56,22 +56,43 @@
       Module 7: Developing Routines
     </ion-label>
   </ion-item>
+  <!-- MODULE 8
+    <ion-item button routerLink="/module-eight" detail>
+    <ion-label>
+      Module 8: Blank
+    </ion-label>
+  </ion-item>
+  -->
+  <!-- MODULE 9
+    <ion-item button routerLink="/module-nine" detail>
+    <ion-label>
+      Module 9: Blank
+    </ion-label>
+  </ion-item>
+  -->
+  <!-- MODULE 10
+    <ion-item button routerLink="/module-ten" detail>
+    <ion-label>
+      Module 10: Blank
+    </ion-label>
+  </ion-item>
+  -->
 
 </ion-content>
 
-<ion-tab-bar slot="bottom">
+<ion-tab-bar slot="bottom" color="primary">
     <ion-tab-button routerLink="/modules-list" >
       <ion-icon name="arrow-dropright"></ion-icon>
-      <ion-label>Modules</ion-label>
+      <ion-label >Modules</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/project-list">
+    <ion-tab-button routerLink="/user-account">
       <ion-icon name="book"></ion-icon>
-      <ion-label>Log</ion-label>
+      <ion-label >Log</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="account">
+    <ion-tab-button routerLink="/profile-page">
       <ion-icon name="person"></ion-icon>
-      <ion-label>Account</ion-label>
+      <ion-label >Account</ion-label>
     </ion-tab-button>
   </ion-tab-bar>

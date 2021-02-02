@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-module-seven',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModuleSevenPage implements OnInit {
 
-  constructor() { }
+  hideMe1: boolean = false;
+  hideMe2: boolean = false;
+
+  constructor(private titleService: Title) { 
+    this.titleService.setTitle('MIMA Module 7');
+  }
+
+  hide1() {
+    this.hideMe1 = !this.hideMe1;
+  }
+
+  hide2() {
+    this.hideMe2 = !this.hideMe2;
+  }
 
   ngOnInit() {
   }

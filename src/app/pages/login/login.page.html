@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>Mental Skills Cirriculum</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+	<ion-list style="display:flex; flex-direction:column; align-items:center; align-content:center; justify-content:center;" >
+		<img src="../../../assets/module_pictures/logo.png" />
+		<ion-item style="width:100%;">
+		  <ion-label position="floating">Email</ion-label>
+		  <ion-input type="text" [(ngModel)]="username"></ion-input>
+		</ion-item>
+	  
+		<ion-item style="width:100%;">
+		  <ion-label position="floating">Password</ion-label>
+		  <ion-input type="password" [(ngModel)]="password"></ion-input>
+		</ion-item>
+	  </ion-list>
+		<br>
+		<ion-button fill="solid" expand="block" (click)="login()">Login</ion-button>
+		<br>
+		
+		<ion-button routerLink="/create-account" fill="outline" expand="block">Create an Account</ion-button>
+		
 </ion-content>

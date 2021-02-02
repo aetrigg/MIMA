@@ -3,26 +3,65 @@ import { Observable } from 'rxjs';
 import { AngularFirestoreCollection, AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
 
-export interface Project {
-  id?: string; 
-  skill_used: string; 
-  description: string;
+export interface Post {
+  author: string; 
+  date: Date;
+  desc: string;
   effect: string;
-  time: string;
-  date: string;
-  location: string;
+  skillUsed: string;
+}
+
+export interface Exercise{
+  exTwo_Zero: string;
+  exTwo_One: string;
+  exTwo_Two: string;
+  exTwo_Three: string;
+  exTwo_Four: string;
+  exTwo_Five: string;
+  exTwo_Six: string;
+  exTwo_Seven: string;
+  exTwo_Eight: string;
+  exTwo_Nine: string;
+  exTwo_Ten: string;
+  exTwo_Positive: string;
+  exTwo_Negative: string;
+  exFour_Negative: string;
+  exFour_Counter: string;
+  exFive_One: string;
+}
+
+export interface User {
+  username:string;
+  timeStamp: Date;
+
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectServiceService {
-  private projects: Observable<Project[]>;
-  private projectCollection:AngularFirestoreCollection<Project>;
+  public posts: Observable<Post[]>;
+  public postCollection:AngularFirestoreCollection<Post>;
+
+  public exercises: Observable<Exercise[]>;
+  public exerciseCollection:AngularFirestoreCollection<Exercise>;
+
+  public users: Observable<User[]>;
+  public userCollection:AngularFirestoreCollection<User>;
 
   constructor(private afs:AngularFirestore) {
-    this.projectCollection = this.afs.collection<Project>("projects");
-    this.projects = this.projectCollection.snapshotChanges().pipe(
+
+    this.postCollection = this.afs.collection<Post>('posts');
+    this.posts = this.postCollection.valueChanges();
+
+    this.exerciseCollection = this.afs.collection<Exercise>('exercises');
+    this.exercises = this.exerciseCollection.valueChanges();
+
+    this.userCollection = this.afs.collection<User>('users');
+    this.users = this.userCollection.valueChanges();
+    
+/*     this.postCollection = this.afs.collection<Post>("posts");
+    this.posts = this.postCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a=> {
           //gets what inside a doc
@@ -32,23 +71,30 @@ export class ProjectServiceService {
           return {id, ...data};
         });
       })
-    );
+    ); */
    }
 
-   getProjects():Observable<Project[]> {
-     return this.projects;
+   getPosts():Observable<Post[]> {
+     return this.posts;
    }
 
-   getProject(id: string):Observable<Project> {
-     return this.projectCollection.doc<Project>(id).valueChanges().pipe(
+   getExercises():Observable<Exercise[]> {
+    return this.exercises;
+  }
+
+  getUsers():Observable<User[]> {
+    return this.users;
+  }
+/*    getProject(id: string):Observable<Post> {
+     return this.postCollection.doc<Post>(id).valueChanges().pipe(
        take(1),
        map(project => {
-         project.id = id;
+         project.date = date;
          return project;
        })
       )
-   }
-
+   } */
+/* 
    addProject(project: Project): Promise<DocumentReference> {
      return this.projectCollection.add(project);
    }
@@ -61,5 +107,5 @@ export class ProjectServiceService {
 
    deleteProject(id:string):Promise<void> {
      return this.projectCollection.doc(id).delete();
-   }
+   } */
 }
